@@ -223,18 +223,22 @@ async function unknown_error() {
   await sleep(10000);
 }
 
-console.log(" rpc  | " + rpc.endpoint);
-
 // cs1_claim_rplanet();
-cd3_claim_rplanet();
 
-http
-  .createServer(function (req, res) {
-    // console.log(`Just got a request at ${req.url}!`);
-    res.write("claiming cd3...");
-    res.end();
-  })
-  .listen(process.env.PORT || 3000);
+async function run() {
+  console.log(" rpc  | " + rpc.endpoint);
+  await cd3_claim_rplanet();
+
+  http
+    .createServer(function (req, res) {
+      // console.log(`Just got a request at ${req.url}!`);
+      res.write("claiming cd3...");
+      res.end();
+    })
+    .listen(process.env.PORT || 3000);
+}
+
+run();
 
 // all_claim_greenrabbit();
 
