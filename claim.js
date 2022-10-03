@@ -106,7 +106,7 @@ async function cd3_claim_rplanet() {
     let tx = transaction.transaction_id;
     console.log("🐵 " + tx);
     notify.sendMessage(chat_id2, tx);
-    await sleep(10000);
+    await sleep(5000);
     await cd3_claim_rplanet();
   } catch (error) {
     if (error.message == "assertion failure with message: E_NOTHING_TO_CLAIM") {
@@ -228,7 +228,7 @@ async function unknown_error() {
 async function run() {
   console.log(" rpc  | " + rpc.endpoint);
   await cd3_claim_rplanet();
-
+  await sleep(10000);
   http
     .createServer(function (req, res) {
       // console.log(`Just got a request at ${req.url}!`);
