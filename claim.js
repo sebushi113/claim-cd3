@@ -231,7 +231,7 @@ cd3_claim_rplanet();
 http
   .createServer(function (req, res) {
     // console.log(`Just got a request at ${req.url}!`);
-    res.write("claiming cs1...");
+    res.write("claiming cd3...");
     res.end();
   })
   .listen(process.env.PORT || 3000);
