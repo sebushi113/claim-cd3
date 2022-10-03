@@ -8,13 +8,6 @@ import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-
 dotenv.config();
 import * as notify from "./notify.js";
 import * as http from "http";
-http
-  .createServer(function (req, res) {
-    // console.log(`Just got a request at ${req.url}!`);
-    res.write("claiming cs1...");
-    res.end();
-  })
-  .listen(process.env.PORT || 3000);
 
 const privateKeys = [process.env.cs1c, process.env.cd3c];
 
@@ -234,6 +227,15 @@ console.log(" rpc  | " + rpc.endpoint);
 
 // cs1_claim_rplanet();
 cd3_claim_rplanet();
+
+http
+  .createServer(function (req, res) {
+    // console.log(`Just got a request at ${req.url}!`);
+    res.write("claiming cs1...");
+    res.end();
+  })
+  .listen(process.env.PORT || 3000);
+
 // all_claim_greenrabbit();
 
 // cron.schedule("2 * * * *", cs1_claim_rplanet);
