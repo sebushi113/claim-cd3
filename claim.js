@@ -225,20 +225,20 @@ async function unknown_error() {
 
 // cs1_claim_rplanet();
 
-async function run() {
-  console.log(" rpc  | " + rpc.endpoint);
-  await cd3_claim_rplanet();
-  await sleep(10000);
-  http
-    .createServer(function (req, res) {
-      // console.log(`Just got a request at ${req.url}!`);
-      res.write("claiming cd3...");
-      res.end();
-    })
-    .listen(process.env.PORT || 3000);
-}
+// async function run() {
+console.log(" rpc  | " + rpc.endpoint);
+cd3_claim_rplanet();
+// await sleep(10000);
+http
+  .createServer(function (req, res) {
+    // console.log(`Just got a request at ${req.url}!`);
+    res.write("claiming cd3...");
+    res.end();
+  })
+  .listen(process.env.PORT || 3000);
+// }
 
-run();
+// run();
 
 // all_claim_greenrabbit();
 
