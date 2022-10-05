@@ -7,7 +7,7 @@ import moment from "moment";
 import * as dotenv from "dotenv"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 dotenv.config();
 import * as notify from "./notify.js";
-import * as http from "http";
+// import * as http from "http";
 
 const privateKeys = [process.env.cs1c, process.env.cd3c];
 
@@ -229,10 +229,14 @@ async function unknown_error() {
 console.log(" rpc  | " + rpc.endpoint);
 cd3_claim_rplanet();
 // await sleep(10000);
+
+import * as http from "http";
 http
-  .createServer(function (req, res) {
+  .createServer(async function (req, res) {
     // console.log(`Just got a request at ${req.url}!`);
-    res.write("claiming cd3...");
+    res.write("claiming cd3...\n");
+    // await sleep(20000);
+    res.write("claimed\n" + (await cd3_claim_rplanet()));
     res.end();
   })
   .listen(process.env.PORT || 3000);
