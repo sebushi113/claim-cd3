@@ -247,7 +247,7 @@ import express from "express";
 const app = express();
 app.use(async (req, res, next) => {
   //do stuff
-  res.send("claiming cs1...");
+  res.send("claiming cd3...");
   await cd3_claim_rplanet();
   res.send("claimed");
 });
