@@ -234,9 +234,10 @@ import * as http from "http";
 http
   .createServer(async function (req, res) {
     // console.log(`Just got a request at ${req.url}!`);
-    res.write("claiming cd3...\n");
+    res.write("claiming cs1...\n");
     // await sleep(20000);
-    res.write("claimed\n" + (await cd3_claim_rplanet()));
+    await cs1_claim_rplanet();
+    res.write("claimed\n" + cs1_claim_rplanet());
     res.end();
   })
   .listen(process.env.PORT || 3000);
