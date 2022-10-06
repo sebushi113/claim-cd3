@@ -247,15 +247,16 @@ import express from "express";
 const app = express();
 app.use(async (req, res, next) => {
   //do stuff
-  res.send("claiming cd3...");
+  // res.send("claiming cd3...");
   await cd3_claim_rplanet();
   res.send("claimed");
+  next();
 });
-// app.all("/", (req, res) => {
-//   console.log("Just got a request!");
-//   res.send("claiming cs1...");
-//   // res.send("claimed" + claimed);
-// });
+app.all("/", (req, res) => {
+  // console.log("Just got a request!");
+  res.send("claiming cs1...");
+  // res.send("claimed" + claimed);
+});
 app.listen(process.env.PORT || 3000);
 
 // run();
