@@ -81,7 +81,7 @@ async function cs1_claim_rplanet() {
   // }
 }
 
-async function cd3_claim_rplanet() {
+var claim = async function cd3_claim_rplanet() {
   try {
     const transaction = await api.transact(
       {
@@ -127,7 +127,7 @@ async function cd3_claim_rplanet() {
     }
   }
   // }
-}
+};
 
 async function all_claim_greenrabbit() {
   // while (true) {
@@ -247,15 +247,15 @@ import express from "express";
 const app = express();
 app.use(async (req, res, next) => {
   //do stuff
-  // res.send("claiming cd3...");
-  await cd3_claim_rplanet();
-  res.send("claimed");
+  res.send("claiming cd3...");
+  await claim();
+  // res.send("claimed");
   next();
 });
 app.all("/", (req, res) => {
   // console.log("Just got a request!");
-  res.send("claiming cs1...");
-  // res.send("claimed" + claimed);
+  // res.send("claiming cd3...");
+  res.send("claimed" + claim);
 });
 app.listen(process.env.PORT || 3000);
 
