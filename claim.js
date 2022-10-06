@@ -245,10 +245,10 @@ console.log(" rpc  | " + rpc.endpoint);
 
 import express from "express";
 const app = express();
-app.use(function (req, res, next) {
+app.use(async (req, res, next) => {
   //do stuff
   res.send("claiming cs1...");
-  cd3_claim_rplanet();
+  await cd3_claim_rplanet();
   res.send("claimed");
 });
 // app.all("/", (req, res) => {
