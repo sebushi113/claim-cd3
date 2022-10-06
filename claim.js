@@ -230,18 +230,33 @@ console.log(" rpc  | " + rpc.endpoint);
 // cd3_claim_rplanet();
 // await sleep(10000);
 
-import * as http from "http";
-http
-  .createServer(async function (req, res) {
-    // console.log(`Just got a request at ${req.url}!`);
-    res.write("claiming cs1...\n");
-    // await sleep(20000);
-    await cd3_claim_rplanet();
-    res.write("claimed\n" + cd3_claim_rplanet());
-    res.end();
-  })
-  .listen(process.env.PORT || 3000);
+// import * as http from "http";
+// http
+//   .createServer(async function (req, res) {
+//     // console.log(`Just got a request at ${req.url}!`);
+//     res.write("claiming cs1...\n");
+//     // await sleep(20000);
+//     await cd3_claim_rplanet();
+//     res.write("claimed\n" + cd3_claim_rplanet());
+//     res.end();
+//   })
+//   .listen(process.env.PORT || 3000);
 // }
+
+import express from "express";
+const app = express();
+app.use(function (req, res, next) {
+  //do stuff
+  res.send("claiming cs1...");
+  cd3_claim_rplanet();
+  res.send("claimed");
+});
+// app.all("/", (req, res) => {
+//   console.log("Just got a request!");
+//   res.send("claiming cs1...");
+//   // res.send("claimed" + claimed);
+// });
+app.listen(process.env.PORT || 3000);
 
 // run();
 
